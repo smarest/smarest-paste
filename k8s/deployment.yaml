@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: smarest-paste
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: smarest-paste
+    spec:
+      containers:
+      - name: smarest-paste
+        image: smarest/smarest-paste:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: smarest-paste-persistent-storage
+            mountPath: /var/www/html/files
+      volumes:
+      - name: smarest-paste-persistent-storage
+        persistentVolumeClaim:
+          claimName: smarest-paste
