@@ -9,7 +9,6 @@ RUN go get -d github.com/smarest/smarest-common/service
 RUN go get -d github.com/smarest/smarest-common/domain/entity/exception
 RUN go get -d github.com/smarest/smarest-paste/application
 
-COPY ./templates ./templates
 # Install the package
 RUN go build -o main .
 

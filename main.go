@@ -13,11 +13,9 @@ func main() {
 		log.Fatalln("can not create bean", err)
 	}
 	router := gin.Default()
-	router.LoadHTMLGlob("templates/*")
-	router.GET("/paste", bean.FileUploadService.Get)
 	router.GET("/cookie/:uid", bean.FileUploadService.SetCookie)
 
 	router.Static("/paste/view", bean.FileUploadService.Directory)
 	router.POST("/paste", bean.FileUploadService.Post)
-	router.Run(":3030")
+	router.Run(":8080")
 }

@@ -28,17 +28,6 @@ func NewFileUploadService(loginService *application.LoginService, directory stri
 		[]string{".jpg", ".JPG", ".png", ".PNG", ".jpeg", ".JPEG", ".gif", ".GIF"}}
 }
 
-// Get get
-func (s *FileUploadService) Get(c *gin.Context) {
-	_, err := s.CheckCookie(c)
-	if err != nil {
-		c.Redirect(http.StatusMovedPermanently, s.GetLoginUrl(c))
-		return
-	}
-	c.HTML(http.StatusOK, "index.tmpl", nil)
-	return
-}
-
 // Post post
 func (s *FileUploadService) Post(c *gin.Context) {
 	_, lErr := s.CheckCookie(c)
